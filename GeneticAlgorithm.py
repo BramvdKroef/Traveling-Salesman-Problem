@@ -49,6 +49,7 @@ class GeneticAlgorithm:
         return self.generation
 
     def getBestSolution(self):
+        """Returns the solution that returns the highest fitness score."""
         fitnesses = [solution.getFitness() for solution in self.generation]
         return self.generation[fitnesses.index(max(fitnesses))]
 
@@ -65,7 +66,10 @@ class GeneticAlgorithm:
         return self.generation[index - 1]
     
     def evolve(self):
-    
+        """Selects solutions from the current generation using
+        select() and uses them to create a new generation. Some of the
+        solutions have a crossover or mutation performed on them."""
+        
         # Fitness calculation
         fitnesses = [solution.getFitness() for solution in self.generation]
         floor = min(fitnesses)
@@ -78,7 +82,7 @@ class GeneticAlgorithm:
                        self.select(fitnesses).copy()]
 
             # Randomly run them through crossover()
-            if random.random() < self.crossoverChance:
+            if random.random() <= self.crossoverChance:
                 parents[0].crossover(parents[1])
 
             # Randomly run them through mutate()

@@ -48,6 +48,8 @@ class Route(GeneticAlgorithm.SolutionCandidate):
                 return 1 / pow(self.getLength(), 2)
 
         def crossover(self, route):
+                """Take a cross-section of this instance and swap it
+                with a cross-section of route."""
                 x1 = len(self.cities) / 3
                 x2 = x1 * 2
                 routes = [self.cities, route.cities]
@@ -65,8 +67,8 @@ class Route(GeneticAlgorithm.SolutionCandidate):
                         for j in range(x1,x2):
                                 route[j] = cross[j-x1]
                                 
-#muteerd de gegeven routes door twee steden van plaats te verwisselen
         def mutate(self):
+                """Swap two cities."""
                 index1 = random.randint(0, len(self.cities) - 1)
                 index2 = random.randint(0, len(self.cities) - 1)
                 n = self.cities[index1]
