@@ -1,0 +1,46 @@
+* The Traveling Salesman Problem
+
+This project uses a Genetic Algorithm to solve the Traveling Salesman
+Problem. The positions of the cities are given as coordinates on a 2D
+plane. The script returns the cities in the order of one of the
+shortest routes and can also write the route to an SVG image.
+
+#+BEGIN_QUOTE
+The travelling salesman problem (TSP) is an NP-hard problem in
+combinatorial optimization studied in operations research and
+theoretical computer science. Given a list of cities and their
+pairwise distances, the task is to find the shortest possible route
+that visits each city exactly once and returns to the origin city. It
+is a special case of the travelling purchaser problem.
+
+@<div class="source">[[http://en.wikipedia.org/wiki/Traveling_salesman_problem][Wikipedia]]@</div>
+#+END_QUOTE
+
+A set of 10 cities has 10!(factorial) = 3,628,800 possible routes. A
+genetic algorithm can find an acceptable path in a small amount of
+time by creating a pool of random routes and selecting the shortest
+to create a new generation. Each generation random mutations are
+introduced and pairs of routes are combined to create a new route.
+
+
+* Usage
+
+This runs the algorithm with an octagon:
+
+#+BEGIN_EXAMPLE
+python TravelingSalesman.py 26,2 62,2 87,26 87,62 62,87 26,87 2,62 2,26
+#+END_EXAMPLE
+
+You can also let it use random input:
+
+#+BEGIN_EXAMPLE
+python TravelingSalesman.py -r
+#+END_EXAMPLE
+
+Output a map to an image:
+
+#+BEGIN_EXAMPLE
+python TravelingSalesman.py -r -i map.svg
+#+END_EXAMPLE
+
+
